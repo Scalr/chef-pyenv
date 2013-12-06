@@ -1,0 +1,3 @@
+foodcritic: bundle exec foodcritic -f any . --tags ~FC008 $SANDBOX/$COOKBOOK
+rubocop:    bundle exec rubocop
+kitchen:    bundle exec kitchen test
