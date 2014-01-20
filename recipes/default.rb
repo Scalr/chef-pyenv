@@ -33,8 +33,7 @@ Array(node['pyenv']['pythons']).each do |python|
   bash "install python #{python}" do
     environment 'PYENV_ROOT' => root_path
     code <<-EOH
-#{root_path}/bin/pyenv install #{python}
-    #{root_path}/bin/pyenv rehash
+    #{root_path}/bin/pyenv install #{python}
     EOH
     not_if "pyenv versions | grep -q #{python}"
   end
@@ -66,5 +65,13 @@ bash 'init pyenv' do
   environment 'PYENV_ROOT' => root_path
   code <<-EOH
     sudo #{root_path}/bin/pyenv init -
+  EOH
+end
+
+bash 'chown shims directory' do
+  environment 'PYENV_ROOT' => root_path
+  code <<-EOH
+    sudo chmod 777 #{root_path}/shims
+    #{root_path}/bin/pyenv rehash
   EOH
 end
