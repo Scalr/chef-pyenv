@@ -35,7 +35,7 @@ Array(node['pyenv']['pythons']).each do |python|
     code <<-EOH
     #{root_path}/bin/pyenv install #{python}
     EOH
-    not_if "pyenv versions | grep -q #{python}"
+    not_if "#{root_path}/bin/pyenv versions | grep -q #{python}"
   end
 end
 
