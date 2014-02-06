@@ -1,8 +1,9 @@
+include_recipe 'apt'
 include_recipe 'git'
 
 root_path = node['pyenv']['root_path']
 
-%w(sqlite3 libsqlite3-dev libbz2-dev libreadline-dev zlib1g-dev libssl-dev build-essential).each do |pkg|
+%w(curl sqlite3 libsqlite3-dev libbz2-dev libreadline-dev zlib1g-dev libssl-dev build-essential).each do |pkg|
   package pkg do
     action :install
   end
