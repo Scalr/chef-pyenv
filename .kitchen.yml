@@ -16,7 +16,7 @@ platforms:
 suites:
 - name: default
   run_list:
-  - recipe[chef-pyenv]
+    - recipe[pyenv]
   attributes:
     pyenv:
       pip:
