@@ -72,7 +72,7 @@ end
 bash 'chown shims directory' do
   environment 'PYENV_ROOT' => root_path
   code <<-EOH
-    sudo chmod 777 #{root_path}/shims
+    sudo chmod 755 #{root_path}/shims
     #{root_path}/bin/pyenv rehash
   EOH
 end
