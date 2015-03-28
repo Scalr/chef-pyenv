@@ -32,10 +32,10 @@ end
 
 Array(node['pyenv']['pythons']).each do |python|
   bash "install python #{python}" do
-    environment {
+    environment ({
       'PYENV_ROOT' => root_path,
       'PYTHON_CONFIGURE_OPTS' => '--enable-unicode=ucs4'
-    }
+    })
     code <<-EOH
     #{root_path}/bin/pyenv install #{python}
     EOH
