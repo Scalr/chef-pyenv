@@ -55,11 +55,13 @@ node['pyenv']['pip'].each_pair do |python, pkgs|
 end
 
 global_python = node['pyenv']['global']
-bash "set global python to #{global_python}" do
-  environment 'PYENV_ROOT' => root_path
-  code <<-EOH
-    #{root_path}/bin/pyenv global #{global_python}
-  EOH
+if global_python
+  bash "set global python to #{global_python}" do
+    environment 'PYENV_ROOT' => root_path
+    code <<-EOH
+      #{root_path}/bin/pyenv global #{global_python}
+    EOH
+  end
 end
 
 bash 'init pyenv' do
